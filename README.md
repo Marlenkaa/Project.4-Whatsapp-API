@@ -12,11 +12,11 @@ Descarga de un fichero .txt desde la aplicación de Whatsapp del grupo o convers
 
 ### 2.- LIMPIEZA DE DATOS
 
-El fichero descargado es necesario limpiarlo y adaptarlo al formato correcto para poder tratar los datos. Este proceso se realiza en el ficher `dataCleaning.py`.
+El fichero descargado es necesario limpiarlo y adaptarlo al formato correcto para poder tratar los datos. Este proceso se realiza en el fichero `dataCleaning.py`.
 
 ### 3.- CREACION BASE DE DATOS
 
-Una vez nuestros datos estén preparados, podemos crear nuestra base de datos con los usuarios que participan en el grupo, los chats (en este caso, se ha considerado cada día un chat independiente debido a la elevada cantidad de mensajes por día) y las conversaciones o mensajes que ha escrito cada uno. Esto se traduce en tres colecciones diferentes cuyo aspecto en MongoDB es el siguiente:
+Una vez nuestros datos estén preparados, podemos crear nuestra base de datos con los usuarios que participan en el grupo, los chats (en este caso, se ha considerado cada día un chat independiente debido a la elevada cantidad de mensajes por día) y las conversaciones o mensajes que ha escrito cada usuario. Esto se traduce en tres colecciones diferentes cuyo aspecto en MongoDB es el siguiente:
 
 ![](https://github.com/Shurlena/whatsapp-API/blob/master/images/apichat-mongodb.png)
 
