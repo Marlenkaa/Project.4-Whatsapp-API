@@ -8,7 +8,7 @@ A continuación se indican los pasos a seguir y las funcionalidades:
 
 Descarga de un fichero .txt desde la aplicación de Whatsapp del grupo o conversación que queramos analizar. Esto se puede conseguir desde la opción `Exportar chat` en el apartado `Más` del menú desplegable.
 
-![](https://github.com/Shurlena/whatsapp-API/blob/master/images/whatsapp-file.jpeg)
+![](https://github.com/Shurlena/whatsapp-API/blob/master/images/whatsapp-file.png)
 
 ### 2.- LIMPIEZA DE DATOS
 
