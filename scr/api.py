@@ -24,23 +24,27 @@ def createDatabase():
 
 @app.route('/insert/user/<name>')
 def createUser(name):
+    '''Create new user in users collection'''
     user.insertUser(name)
     return f'User "{name}" has been inserted into users collection'
 
 @app.route('/insert/chat/<name>')
 def createChat(name):
+    '''Create new chat in chats collection'''
     chat.insertChat(name)
     return 'Chat has been inserted into chats collection'
 
 @app.route('/insert/user/to/chat/<chat>/<name>')
 def insertUser(chat,name):
-    user.insertUsertoChat(chat,name)
-    return f'User "{name}" has been inserted into chat "{chat}" in chats collection'
+    '''Insert existing user in existing chat'''
+    result = user.insertUsertoChat(chat,name)
+    return result
 
 @app.route('/insert/message/<chat>/<name>/<datetime>/<message>')
 def insertMessage(chat,name,datetime,message):
+    '''Create new message in conversations collection'''
     conversation.insertMessagetoChat(chat,name,datetime,message)
-    return f'User "{name}" has been inserted into chat "{chat}" in chats collection'
+    return f'Message "{message}" has been inserted into conversations collection'
 
 @app.route('/get/info/users')
 def usersInfo():

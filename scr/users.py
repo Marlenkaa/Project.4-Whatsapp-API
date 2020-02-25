@@ -48,7 +48,8 @@ def insertUser(name):
 def insertUsertoChat(chat,name):
     '''Inserts an user into created chat'''
     # Cheks if introduced user already exists in indicated chat
-    chats_list = list(chats.find({'user_name':name}, {'chat_date': 1,'_id':0}))
+    userid = list(users.find({'user_name':name}, {'user_id': 1,'_id':0}))[0]['user_id']
+    chats_list = list(chats.find({'user_id':userid}, {'chat_date': 1,'_id':0}))
     user_chats = []
     for i in chats_list:
         user_chats.append(i['chat_date'])
@@ -58,7 +59,6 @@ def insertUsertoChat(chat,name):
     else:
         # Finds users and chats ids
         chatid = list(chats.find({'chat_date':chat}, {'chat_id': 1,'_id':0}))[0]['chat_id']
-        userid = list(users.find({'user_name':name}, {'user_id': 1,'_id':0}))[0]['user_id']
         # Inserts into collection
         chats.insert_one({
             'chat_id': chatid,
