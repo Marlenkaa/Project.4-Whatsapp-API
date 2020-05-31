@@ -1,6 +1,8 @@
 # Whatsapp API
 
-<img src="https://raw.githubusercontent.com/Shurlena/Project.4-Whatsapp-API/master/images/Whatsapp-logo.png" width="400">
+<p align="left">
+    <img src="https://raw.githubusercontent.com/Shurlena/Project.4-Whatsapp-API/master/images/Whatsapplogo.png" width="320">
+</p>
 
 The goal of this project is to create an API that analyzes the conversations of a chat. For this purpose, a real WhatsApp chat group has been used.
 
