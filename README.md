@@ -8,7 +8,7 @@ The goal of this project is to create an API that analyzes the conversations of 
 
 The first step is create a database with chat's information. If you also want to analyze a Whatsapp conversation, all you need to do is download the .txt file from the `Export chat` option that you can find on `More` section of the drop-down menu.
 
-<p align="center">
+<p align="left">
     <img src="https://raw.githubusercontent.com/Shurlena/Project.4-Whatsapp-API/master/images/whatsapp-file.png" width="200">
 </p>
 
