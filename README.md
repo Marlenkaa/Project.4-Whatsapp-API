@@ -6,11 +6,7 @@
 
 The goal of this project is to create an API that analyzes the conversations of a chat. For this purpose, a real WhatsApp chat group has been used.
 
-The first step is create a database with chat's information. If you also want to analyze a Whatsapp conversation, all you need to do is download the .txt file from the `Export chat` option that you can find on `More` section of the drop-down menu.
-
-<p align="left">
-    <img src="https://raw.githubusercontent.com/Shurlena/Project.4-Whatsapp-API/master/images/whatsapp-file.png" width="200">
-</p>
+The first step is create a database with chat's information. If you also want to analyze a Whatsapp conversation, all you need to do is download the .txt file from a chosen chat. You can do this pressing the three dots on the top-right corner, select `More` and `Export chat` option.
 
 The API is prepared to clean Whatsapp files and create automatically the database from it. It should be saved in INPUT folder with `whatsapp.txt` name. Otherwise, you need to introduce data manually.
 
