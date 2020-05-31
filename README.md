@@ -1,48 +1,59 @@
 # Whatsapp API
 
-El objetivo de este proyecto es crear una API que analice las conversaciones de un chat. Para su desarrollo, se ha hecho uso de un grupo de Whatsapp real.
+<p align="left">
+    <img src="https://raw.githubusercontent.com/Shurlena/Project.4-Whatsapp-API/master/images/Whatsapp-logo.png" width="400">
+</p>
 
-A continuación se indican los pasos a seguir y las funcionalidades:
+The goal of this project is to create an API that analyzes the conversations of a chat. For this purpose, a real WhatsApp chat group has been used.
 
-### 1.- OBTENCIÓN DE LOS DATOS
+The first step is create a database with chat's information. If you also want to analyze a Whatsapp conversation, all you need to do is download the .txt file from the `Export chat` option that you can find on `More` section of the drop-down menu.
 
-Descarga de un fichero .txt desde la aplicación de Whatsapp del grupo o conversación que queramos analizar. Esto se puede conseguir desde la opción `Exportar chat` en el apartado `Más` del menú desplegable.
+<p align="center">
+    <img src="https://raw.githubusercontent.com/Shurlena/Project.4-Whatsapp-API/master/images/whatsapp-file.png" width="400">
+</p>
 
-![](https://github.com/Shurlena/whatsapp-API/blob/master/images/whatsapp-file.png)
+The API is prepared to clean Whatsapp files and create automatically the database from it. It should be saved in INPUT folder with `whatsapp.txt` name. Otherwise, you need to introduce data manually.
 
-### 2.- LIMPIEZA DE DATOS
+##### REQUESTS [POST]
 
-El fichero descargado es necesario limpiarlo y adaptarlo al formato correcto para poder tratar los datos. Este proceso se realiza en el fichero `dataCleaning.py`.
+Here you can find the requests you can use to introduce data:
 
-### 3.- CREACION BASE DE DATOS
+- File cleaning and database creation: `/createdatabase`
+- Create an user: `/insert/user/<name>`
+- Create a chat: `/insert/chat/<name>`
+- Insert message: `/insert/message/<chat>/<name>/<datetime>/<message>`
+- Insert user into a chat: `/insert/user/to/chat/<chat>/<name>`
 
-Una vez nuestros datos estén preparados, podemos crear nuestra base de datos con los usuarios que participan en el grupo, los chats (en este caso, se ha considerado cada día un chat independiente debido a la elevada cantidad de mensajes por día) y las conversaciones o mensajes que ha escrito cada usuario. Esto se traduce en tres colecciones diferentes cuyo aspecto en MongoDB es el siguiente:
+##### REQUESTS [GET]
 
-![](https://github.com/Shurlena/whatsapp-API/blob/master/images/apichat-mongodb.png)
+On the other hand, these are the requests to obtain some information about the chat:
 
-En la API (`api.py`) se reunen todas estas acciones bajo una única función que se llamará con la ruta `/createdatabase`
+- List of users: `/get/info/users`
+- List of chats: `/get/info/chats`
+- List of messages from a chat: `/get/info/<chat>`
+- Messages wrote by specified user: `/get/messages/<name>`
+- Analysis of sentiments from a chat: `/get/sentiments/from/<chat>`
+- Analysis of sentiments from a chat (spanish version): `/get/sentiments/from/spanish/<chat>`
+- Recommendation of similar users: `/recommend/user/<name>`
 
-### 4.- PETICIONES [POST]
+### INPUT
 
-Es posible añadir información adicional a nuestra base de datos, como:
+Contains the Whatsapp file we want to analyze through the API.
 
-- Crear un usuario: `/insert/user/<name>`
-- Crear un chat: `/insert/chat/<name>`
-- Creat un mensaje: `/insert/message/<chat>/<name>/<datetime>/<message>`
-- Insertar un usuario en un chat: `/insert/user/to/chat/<chat>/<name>`
+### OUTPUT
 
-### 5.- PETICIONES [GET]
+Once the `/createdatabase` request is made, it will automatically generate four .csv files, one with the original Whatsapp cleaned file, and another three divided in users list, chats and conversations extracted.
 
-Y, finalmente, podemos obtener información sobre el chat mediante la API. Las opciones disponibles hasta ahora son:
+### src
 
-- Lista con todos los participantes: `/get/info/users`
-- Lista con todos los chats: `/get/info/chats`
-- Todos los mensajes de un chat: `/get/info/<chat>`
-- Mensajes escritos por un usuario: `/get/messages/<name>`
-- Análisis de sentimientos de un chat (método 1): `/get/sentiments/from/<chat>`
-- Análisis de sentimientos de un chat (método 2): `/get/sentiments/from/spanish/<chat>`
-- Recomendación de usuarios similares: `/recommend/user/<name>`
+* *api.py* -> main file where all requests are configured.
+* *dataCleaning.py* -> cleaning and adaptation of the downloaded Whatsapp file.
+* *users.py* -> functions to create users manually, insert them into a chat or into a collection.
+* *chats.py* -> functions to create chats manually or insert them into a collection.
+* *conversation.py* -> functions to create messages manually or insert them into a collection.
+* *sentiments.py* -> analyzes the sentiments of specified chat.
+* *recommendation.py* -> analyzes the users similarity and lists an ordered recommendation.
 
-** El desglose del funcionamiento de cada posible petición se encuentra más desarrollado dentro de cada fichero .py pertinente.
+### api-tests.ipynb
 
-** En el fichero `api-tests.ipynb` se pueden ver los resultados que arroja cada una de las peticiones.
+All requests are tested in this file in order to see the final results.
